@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'net.dv8tion:JDA:4.4.0_352'
+    compileOnly 'org.pf4j:pf4j:3.7.0'
+    annotationProcessor 'org.pf4j:pf4j:3.7.0'
+    implementation 'com.github.aless2003:jda-commands:plugin_support-SNAPSHOT'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
+
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+jar {
+    archiveName("SimplePlugin.jar")
+    manifest {
+        attributes(
+                "Plugin-Id": "simple-plugin",
+                "Plugin-Version": "1.0.0"
+        )
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
